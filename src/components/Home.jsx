@@ -1,37 +1,28 @@
+
+
 import React from "react";
+import logo from '../assets/images/logo.jpg'; 
 
-const WelcomeComponent = () => {
+export default function HomeScreen() {
   return (
-    <div className=" bg-gray-100">
-   
-     <div> <img
-        src="/src/assets/images/logo.jpg" 
-        alt=""
-        className="w-24 h-24 mb-4"
-      /> </div>
+  <div className="min-h-screen bg-gradient-to-tr from-orange-100 to-orange-300 flex items-center justify-center p-4">
+  <div className="bg-white rounded-3xl shadow-lg p-8 w-full max-w-sm text-center">
+    <img src={logo} alt="Company Logo" className="w-16 mx-auto mb-5" />
+    <h1 className="text-orange-600 font-extrabold text-3xl mb-3">Lucky Draw 2025</h1>
+    <p className="text-black-600 mb-6 max-w-xs mx-auto">
+      Enter your mobile number below to participate and win exciting prizes!
+    </p>
+    <input
+      type="tel"
+      placeholder="Enter mobile no."
+      className="border border-red-300 rounded-lg w-full px-4 py-3 text-lg mb-5 focus:outline-none focus:ring-2 focus:ring-red-600"
+      maxLength={10}
+    />
+    <button className="w-full py-3 bg-red-500 text-white rounded-lg font-bold hover:bg-red-500 transition duration-200">
+      Participate
+    </button>
+  </div>
+</div>
 
-
-      <div className=" flex flex-col items-center justify-center ">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-        Welcome to the SB Solar LuckyDraw Contest
-      </h1>
-      </div>
-
-      <div className="flex flex-col items-center justify-center gap-5">
-         <input
-        type="tel"
-        placeholder="Enter Mobile Number"
-        pattern="[0-9]{10}" 
-        maxLength={10}
-        className="px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-center"
-      />
-      
-     <button className="w-40 px-4 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-semibold rounded-xl shadow-lg hover:scale-105 transform transition duration-300">
-        Verify
-      </button>
-      </div>
-    </div>
   );
-};
-
-export default WelcomeComponent;
+}
