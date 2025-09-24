@@ -56,7 +56,7 @@ function Dashboard() {
     <div className="min-h-screen bg-gray-100">
       <nav className="bg-white px-6 py-4 flex items-center shadow">
         <img src={logo} alt="Company Logo" className="h-10 mr-3" />
-        <span className="font-bold text-xl text-gray-800">Your Company Name</span>
+        <span className="font-bold text-xl text-gray-800">SB Solar Industries</span>
       </nav>
 
       <div className="p-8">

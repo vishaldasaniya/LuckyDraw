@@ -45,8 +45,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo.jpg";
-import PrizeCard from "./PrizeCard"; // PrizeCard component same folder me rakhein
-import washingMachineImage from "../assets/images/logo.jpg"; // Prize image path apne assets me
+import PrizeCard from "./PrizeCard";
+import washingMachineImage from "../assets/images/logo.jpg"; 
 
 export default function HomeScreen() {
   const [mobile, setMobile] = useState("");
@@ -55,9 +55,9 @@ export default function HomeScreen() {
 
   const handleSubmit = () => {
     if (/^[6-9]\d{9}$/.test(mobile)) {
-      // Mobile valid, popup open karenge
+      
       setIsPrizeOpen(true);
-      // Agar chaho to popup close hone ke baad navigate bhi karwa sakte ho
+ 
     } else {
       alert("Valid Mobile Number");
     }
@@ -85,7 +85,7 @@ export default function HomeScreen() {
           className="w-full py-3 bg-red-500 text-white rounded-lg font-bold hover:bg-red-600 transition duration-200"
           onClick={handleSubmit}
         >
-          Varify
+          Verify
         </button>
       </div>
 
