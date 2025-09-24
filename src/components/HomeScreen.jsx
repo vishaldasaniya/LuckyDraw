@@ -11,6 +11,9 @@ export default function HomeScreen() {
   const [prizename, setPrizename] = useState('');
   const navigate = useNavigate();
 
+  const handleAdmin = async ()=>{
+      navigate('/admin/login');
+  }
   const handleSubmit = async () => {
     if (/^[6-9]\d{9}$/.test(mobile)) {
       const response = await axious.post(`${import.meta.env.VITE_MONGO_APIURL}/verify`,{
@@ -61,6 +64,12 @@ export default function HomeScreen() {
           onClick={handleSubmit}
         >
           Verify
+        </button>
+        <button
+          className="w-full py-3 bg-red-500 text-white rounded-lg font-bold hover:bg-red-600 transition duration-200"
+          onClick={handleAdmin}
+        >
+          AdminPanel
         </button>
       </div>
 
