@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AdminLogin() {
+  const navigate = useNavigate();
 
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
@@ -21,7 +23,18 @@ function AdminLogin() {
         email:email,
         password:password
       })
-      console.log(response.data);
+      if(response.data.message==="Valid User")
+      {
+        navigate("/admin/dashboard");
+      }
+      else
+      {
+        navigate("/admin/login");
+      }
+    }
+    else
+    {
+      alert('Please Enter Field Properly');
     }
     setEmail('');
     setPassword('');
