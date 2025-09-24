@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import logo from "../assets/images/logo.jpg";
+import axios from "axios";
 
-const initialWinners = [
-  { mobile: "9876543210", name: "Ali" },
-  { mobile: "9123456789", name: "Priya" },
-  { mobile: "8098765432", name: "Rahul" },
-];
+const initialWinners = await axios.get('http://localhost:8000/admin');
 
 function Dashboard() {
-  const [winners, setWinners] = useState(initialWinners);
+  const [winners, setWinners] = useState(initialWinners.data.users);
   const [mobile, setMobile] = useState("");
   const [name, setName] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
@@ -25,11 +22,25 @@ function Dashboard() {
     if (/^\d*$/.test(value)) setMobile(value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (name === "" || mobile === "") return;
 
-    setWinners([...winners, { name, mobile }]);
+    const response = await axios.post('http://localhost:8000/createParticipation',{
+      name:name,
+      number:mobile
+    });
+    if(response.data.message === "useralreadyexist")
+    {
+      alert('user already exist');
+    }
+    else
+      {
+      setWinners([...winners, { name:response.data.name, mobile:response.data.phoneNumber, prize:response.data.prize }]);
+
+    }
+
+
     setName("");
     setMobile("");
   };
@@ -93,6 +104,7 @@ function Dashboard() {
                 <th className="px-5 py-3 text-left text-orange-700 font-semibold">S.No.</th>
                 <th className="px-5 py-3 text-left text-orange-700 font-semibold">Name</th>
                 <th className="px-5 py-3 text-left text-orange-700 font-semibold">Mobile No.</th>
+                <th className="px-5 py-3 text-left text-orange-700 font-semibold">Prize</th>
               </tr>
             </thead>
             <tbody>
@@ -104,7 +116,8 @@ function Dashboard() {
                   >
                     <td className="border px-5 py-3 border-orange-300">{idx + 1}</td>
                     <td className="border px-5 py-3 border-orange-300">{winner.name}</td>
-                    <td className="border px-5 py-3 border-orange-300">{winner.mobile}</td>
+                    <td className="border px-5 py-3 border-orange-300">{winner.phoneNumber}</td>
+                    <td className="border px-5 py-3 border-orange-300">{winner.prize}</td>
                   </tr>
                 ))
               ) : (
