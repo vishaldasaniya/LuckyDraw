@@ -66,7 +66,7 @@ export default function HomeScreen() {
           Verify
         </button>
         <button
-          className="w-full py-3 bg-red-500 text-white rounded-lg font-bold hover:bg-red-600 transition duration-200"
+          className="w-full mt-2 py-3 bg-red-500 text-white rounded-lg font-bold hover:bg-red-600 transition duration-200"
           onClick={handleAdmin}
         >
           AdminPanel
