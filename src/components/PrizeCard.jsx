@@ -30,7 +30,7 @@ export default function PrizeCard({ isOpen, onClose, prizeImage, prizeName }) {
             alt={prizeName}
             className="mx-auto mb-4 max-h-48"
           />
-          <p className="text-lg">{prizeName} has been won!</p>
+          <p className="text-lg">{prizeName} </p>
           <button
             onClick={onClose}
             className="mt-6 bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition"

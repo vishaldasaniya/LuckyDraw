@@ -19,7 +19,7 @@ function AdminLogin() {
     e.preventDefault();
     if(email!='' && password!='')
     {
-      const response = await axios.post('http://localhost:8000/login',{
+      const response = await axios.post(`${import.meta.env.VITE_MONGO_APIURL}/login`,{
         email:email,
         password:password
       })

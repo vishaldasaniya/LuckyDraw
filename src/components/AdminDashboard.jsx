@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "../assets/images/logo.jpg";
 import axios from "axios";
 
-const initialWinners = await axios.get('http://localhost:8000/admin');
+const initialWinners = await axios.get(`${import.meta.env.VITE_MONGO_APIURL}/admin`);
 
 function Dashboard() {
   const [winners, setWinners] = useState(initialWinners.data.users);
@@ -26,7 +26,7 @@ function Dashboard() {
     e.preventDefault();
     if (name === "" || mobile === "") return;
 
-    const response = await axios.post('http://localhost:8000/createParticipation',{
+    const response = await axios.post(`${import.meta.env.VITE_MONGO_APIURL}/createParticipation`,{
       name:name,
       number:mobile
     });
